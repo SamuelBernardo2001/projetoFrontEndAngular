@@ -1,0 +1,26 @@
+.avaliacoes-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.full {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.lista-avaliacoes {
+  margin-top: 20px;
+}
+
+.avaliacao-item {
+  width: 100%;
+  
+  .estrelas {
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+}

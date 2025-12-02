@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span class="brand" (click)="go('/home')">Pousada Brisa de Neve</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="go('/home')">Home</button>
+  <button mat-button (click)="go('/galeria')">Galeria</button>
+  <button mat-button (click)="go('/reservas')">Reservas</button>
+  <button mat-button (click)="go('/precos')">Preços</button>
+  <button mat-button (click)="go('/informacoes')">Informações</button>
+  <button mat-button (click)="go('/avaliacoes')">Avaliações</button>
+  <button mat-icon-button (click)="toggleTheme()">
+    <mat-icon>brightness_6</mat-icon>
+  </button>
+  <button mat-button *ngIf="!isAuth" (click)="go('/login')">Login</button>
+  <button mat-button *ngIf="isAuth" (click)="logout()">Logout</button>
+</mat-toolbar>

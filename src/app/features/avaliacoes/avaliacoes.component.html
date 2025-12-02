@@ -1,0 +1,39 @@
+<div class="avaliacoes-container">
+  <mat-card>
+    <mat-card-title>Avaliações dos Clientes</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="enviar()">
+        <mat-form-field class="full">
+          <mat-label>Mensagem</mat-label>
+          <textarea matInput rows="3" formControlName="mensagem"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full">
+          <mat-label>Estrelas</mat-label>
+          <mat-select formControlName="estrelas">
+            <mat-option *ngFor="let s of [5,4,3,2,1]" [value]="s">
+              {{ '⭐'.repeat(s) }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Enviar Avaliação
+        </button>
+      </form>
+
+      <section class="lista-avaliacoes">
+        <h3>Últimas avaliações</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let a of avaliacoes">
+            <div class="avaliacao-item">
+              <div class="estrelas">{{ '⭐'.repeat(a.estrelas) }}</div>
+              <p>{{ a.mensagem }}</p>
+              <small>{{ a.data | date:'short' }}</small>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</div>h

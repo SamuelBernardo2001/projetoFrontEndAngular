@@ -1,0 +1,17 @@
+<div class="galeria-container">
+  <h1 class="titulo">Galeria de Fotos</h1>
+  <div class="gallery">
+    <img *ngFor="let img of imagens; let i = index" 
+         [src]="img" 
+         (click)="open(i)" 
+         [alt]="'Foto ' + i"
+         class="gallery-img">
+  </div>
+
+  <div class="lightbox" *ngIf="show" (click)="close()">
+    <button (click)="prev($event)" class="nav-btn left">◄</button>
+    <img [src]="imagens[index]" class="lightbox-img">
+    <button (click)="next($event)" class="nav-btn right">►</button>
+    <button (click)="close()" class="close-btn">×</button>
+  </div>
+</div>

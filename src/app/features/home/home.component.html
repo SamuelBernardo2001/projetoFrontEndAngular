@@ -1,0 +1,24 @@
+<div class="home-container">
+  <h1 class="titulo">Pousada Brisa de Neve</h1>
+  
+  <section>
+    <mat-card>
+      <mat-card-title>Bem-vindo</mat-card-title>
+      <mat-card-content>
+        <p>Ambiente aconchegante em Garanhuns. Faça sua reserva e aproveite.</p>
+        <div class="gallery">
+          <img *ngFor="let img of imagens; let i = index" 
+               [src]="img" 
+               (click)="go('/galeria')" 
+               [alt]="'Imagem ' + i"
+               class="gallery-img">
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="go('/reservas')">
+          Faça sua Reserva
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+</div>

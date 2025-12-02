@@ -1,0 +1,43 @@
+<div class="reservas-container">
+  <mat-card>
+    <mat-card-title>Faça sua Reserva</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="full">
+          <mat-label>Check-in</mat-label>
+          <input matInput type="date" formControlName="checkin" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+          <mat-label>Check-out</mat-label>
+          <input matInput type="date" formControlName="checkout" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+          <mat-label>Hóspedes</mat-label>
+          <input matInput type="number" min="1" formControlName="hospedes" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+          <mat-label>Forma de Pagamento</mat-label>
+          <mat-select formControlName="formaPagamento">
+            <mat-option value="pix">PIX</mat-option>
+            <mat-option value="mercado">Mercado Pago</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          Reservar
+        </button>
+      </form>
+
+      <div *ngIf="detalhes" class="detalhes">
+        <h3>Detalhes</h3>
+        <p>{{ detalhes }}</p>
+        <button mat-stroked-button color="accent" (click)="confirmarPagamento()">
+          Confirmar Pagamento
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

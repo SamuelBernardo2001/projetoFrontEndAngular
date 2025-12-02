@@ -1,0 +1,160 @@
+<div class="admin-container">
+  <mat-card>
+    <mat-card-title>Painel de Administração</mat-card-title>
+    <mat-card-content>
+      <mat-tab-group>
+        <!-- RESERVAS -->
+        <mat-tab label="Reservas ({{ reservas.length }})">
+          <div class="tab-actions">
+            <button mat-stroked-button (click)="exportJSON('reservas')">
+              Exportar JSON
+            </button>
+            <button mat-stroked-button (click)="exportCSV('reservas')">
+              Exportar CSV
+            </button>
+          </div>
+
+          <table mat-table [dataSource]="reservas" 
+                 class="mat-elevation-z8" 
+                 *ngIf="reservas?.length">
+            
+            <ng-container matColumnDef="checkin">
+              <th mat-header-cell *matHeaderCellDef>Check-in</th>
+              <td mat-cell *matCellDef="let r">{{ r.checkin }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="checkout">
+              <th mat-header-cell *matHeaderCellDef>Check-out</th>
+              <td mat-cell *matCellDef="let r">{{ r.checkout }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="hospedes">
+              <th mat-header-cell *matHeaderCellDef>Hóspedes</th>
+              <td mat-cell *matCellDef="let r">{{ r.hospedes }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="dias">
+              <th mat-header-cell *matHeaderCellDef>Diárias</th>
+              <td mat-cell *matCellDef="let r">{{ r.dias }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="valor">
+              <th mat-header-cell *matHeaderCellDef>Valor</th>
+              <td mat-cell *matCellDef="let r">
+                R$ {{ r.valor | number:'1.2-2' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acoes">
+              <th mat-header-cell *matHeaderCellDef>Ações</th>
+              <td mat-cell *matCellDef="let r">
+                <button mat-icon-button 
+                        color="warn" 
+                        (click)="removerReserva(r.id)"
+                        title="Excluir">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <!-- CORREÇÃO: Linha completa -->
+            <tr mat-header-row *matHeaderRowDef="reservasCols"></tr>
+            <tr mat-row *matRowDef="let row; columns: reservasCols;"></tr>
+          </table>
+
+          <div *ngIf="!reservas?.length" class="empty-state">
+            Nenhuma reserva encontrada.
+          </div>
+        </mat-tab>
+
+        <!-- CADASTROS -->
+        <mat-tab label="Cadastros ({{ cadastros.length }})">
+          <div class="tab-actions">
+            <button mat-stroked-button (click)="exportJSON('cadastros')">
+              Exportar JSON
+            </button>
+            <button mat-stroked-button (click)="exportCSV('cadastros')">
+              Exportar CSV
+            </button>
+          </div>
+
+          <table mat-table [dataSource]="cadastros" 
+                 class="mat-elevation-z8" 
+                 *ngIf="cadastros?.length">
+            
+            <ng-container matColumnDef="nome">
+              <th mat-header-cell *matHeaderCellDef>Nome</th>
+              <td mat-cell *matCellDef="let c">{{ c.nome }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="cpf">
+              <th mat-header-cell *matHeaderCellDef>CPF</th>
+              <td mat-cell *matCellDef="let c">{{ c.cpf }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="celular">
+              <th mat-header-cell *matHeaderCellDef>Celular</th>
+              <td mat-cell *matCellDef="let c">{{ c.celular }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>Email</th>
+              <td mat-cell *matCellDef="let c">{{ c.email }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="acoes">
+              <th mat-header-cell *matHeaderCellDef>Ações</th>
+              <td mat-cell *matCellDef="let c">
+                <button mat-icon-button 
+                        color="warn" 
+                        (click)="removerCadastro(c.id)"
+                        title="Excluir">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="cadastrosCols"></tr>
+            <tr mat-row *matRowDef="let row; columns: cadastrosCols;"></tr>
+          </table>
+
+          <div *ngIf="!cadastros?.length" class="empty-state">
+            Nenhum cadastro encontrado.
+          </div>
+        </mat-tab>
+
+        <!-- AVALIAÇÕES -->
+        <mat-tab label="Avaliações ({{ avaliacoes.length }})">
+          <div class="tab-actions">
+            <button mat-stroked-button (click)="exportJSON('avaliacoes')">
+              Exportar JSON
+            </button>
+            <button mat-stroked-button (click)="exportCSV('avaliacoes')">
+              Exportar CSV
+            </button>
+          </div>
+
+          <mat-list *ngIf="avaliacoes?.length">
+            <mat-list-item *ngFor="let a of avaliacoes">
+              <div class="avaliacao-admin">
+                <div class="estrelas">{{ '⭐'.repeat(a.estrelas) }}</div>
+                <p class="mensagem">{{ a.mensagem }}</p>
+                <small class="data">{{ a.data | date:'short' }}</small>
+              </div>
+              <button mat-icon-button 
+                      color="warn" 
+                      (click)="removerAvaliacao(a.id)"
+                      title="Excluir">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+
+          <div *ngIf="!avaliacoes?.length" class="empty-state">
+            Nenhuma avaliação encontrada.
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

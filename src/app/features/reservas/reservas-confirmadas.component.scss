@@ -1,0 +1,15 @@
+.confirmadas-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+mat-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.reserva-info {
+  flex: 1;
+}

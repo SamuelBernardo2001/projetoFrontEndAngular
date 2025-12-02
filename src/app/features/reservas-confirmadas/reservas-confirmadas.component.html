@@ -1,0 +1,23 @@
+<div class="confirmadas-page container-card">
+  <mat-card>
+    <mat-card-title>Reservas Confirmadas</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="loading">Carregando reservas...</div>
+      <div *ngIf="!loading && (!reservas || reservas.length === 0)">Nenhuma reserva encontrada.</div>
+
+      <mat-list *ngIf="reservas?.length">
+        <mat-list-item *ngFor="let r of reservas; let i = index" class="res-item">
+          <div class="info">
+            <div><strong>Período:</strong> {{ r.checkin }} → {{ r.checkout }}</div>
+            <div><strong>Hóspedes:</strong> {{ r.hospedes }} • <strong>Diárias:</strong> {{ r.dias }}</div>
+            <div><strong>Valor:</strong> R$ {{ r.valor | number:'1.2-2' }}</div>
+          </div>
+
+          <div class="acoes">
+            <button mat-stroked-button color="warn" (click)="cancelar(r.id)">Cancelar</button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

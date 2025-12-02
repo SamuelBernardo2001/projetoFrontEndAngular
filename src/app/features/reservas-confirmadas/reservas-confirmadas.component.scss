@@ -1,0 +1,21 @@
+.container-card {
+  max-width: 980px;
+  margin: 20px auto;
+}
+
+.res-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  .info {
+    max-width: 75%;
+    white-space: normal;
+  }
+
+  .acoes {
+    display: flex;
+    gap: 8px;
+  }
+}
