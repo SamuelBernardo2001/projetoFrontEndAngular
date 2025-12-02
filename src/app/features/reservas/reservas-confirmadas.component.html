@@ -1,15 +1,17 @@
 <div class="confirmadas-container">
+
   <mat-card>
     <mat-card-title>Reservas Confirmadas</mat-card-title>
     <mat-card-content>
       <mat-list *ngIf="reservas?.length">
         <mat-list-item *ngFor="let r of reservas">
-          <div class="reserva-info">
-            <div><strong>Check-in:</strong> {{ r.checkin }} → <strong>Check-out:</strong> {{ r.checkout }}</div>
-            <div><strong>Hóspedes:</strong> {{ r.hospedes }} • <strong>Diárias:</strong> {{ r.dias }}</div>
-            <div><strong>Valor:</strong> R$ {{ r.valor | number:'1.2-2' }}</div>
-          </div>
-          <button mat-stroked-button color="warn" (click)="cancelar(r.id)">Cancelar</button>
+          <h3 matListItemTitle>Check-in: {{ r.checkin }} → <strong>Check-out:</strong> {{ r.checkout }}
+            <strong>Hóspedes:</strong> {{ r.hospedes }} • <strong>Diárias:</strong> {{ r.dias }}
+            <strong>Valor:</strong> R$ {{ r.valor | number:'1.2-2' }}
+          </h3>
+          <p matListItemLine>
+            <button mat-stroked-button color="warn" (click)="cancelar(r.id)">Cancelar</button>
+          </p>
         </mat-list-item>
       </mat-list>
       <div *ngIf="!reservas?.length">Nenhuma reserva encontrada.</div>

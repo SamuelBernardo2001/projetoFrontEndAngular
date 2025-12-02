@@ -1,5 +1,30 @@
 {
-  "reservas": [],
+  "reservas": [
+    {
+      "checkin": "2025-12-02",
+      "checkout": "2025-12-05",
+      "hospedes": 2,
+      "dias": 3,
+      "valor": 600,
+      "id": 1
+    },
+    {
+      "checkin": "2025-12-02",
+      "checkout": "2025-12-03",
+      "hospedes": 2,
+      "dias": 1,
+      "valor": 200,
+      "id": 2
+    },
+    {
+      "checkin": "2025-12-05",
+      "checkout": "2025-12-10",
+      "hospedes": 3,
+      "dias": 5,
+      "valor": 1000,
+      "id": 3
+    }
+  ],
   "cadastros": [],
   "avaliacoes": [],
   "usuarios": [

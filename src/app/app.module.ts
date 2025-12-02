@@ -17,6 +17,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatOptionModule } from '@angular/material/core';
+
 
 // Components
 import { AppComponent } from './app.component';
@@ -61,7 +63,7 @@ import { LoginComponent } from './features/login/login.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule,                                        // ← AQUI NO IMPORTS
+    CommonModule,
     RouterModule.forRoot(ROUTES),
 
     // Angular Material Modules
@@ -74,7 +76,8 @@ import { LoginComponent } from './features/login/login.component';
     MatListModule,
     MatIconModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatOptionModule // <-- Aqui está correto, no imports!
   ],
   providers: [
     {

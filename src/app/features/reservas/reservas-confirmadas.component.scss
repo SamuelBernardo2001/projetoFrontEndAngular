@@ -1,15 +1,37 @@
-.confirmadas-container {
-  max-width: 900px;
-  margin: 0 auto;
+.container-card {
+  max-width: 980px;
+  margin: 30px auto;   
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 
-mat-list-item {
+/* Cada item de reserva */
+.res-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-}
+  align-items: flex-start;
+  gap: 20px;                 /* MAIS ESPAÇO ENTRE OS BLOCOS */
+  padding: 16px 0;
+  border-bottom: 1px solid #e3e3e3;
 
-.reserva-info {
-  flex: 1;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  /* Informações da reserva */
+  .info {
+    flex: 1;
+    white-space: normal;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  /* Área dos botões de ação */
+  .acoes {
+    display: flex;
+    flex-direction: column;  /* DEIXA OS BOTÕES UM EM CIMA DO OUTRO */
+    gap: 10px;
+  }
 }
